@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.product').forEach(product => {
     product.addEventListener('click', () => {
         const isExpanded = product.classList.contains('expanded');
+        const productIndex = [...product.parentElement.children].indexOf(product);
+        const isEvenRow = Math.floor(productIndex / 2) % 2 === 0;
         
         document.querySelectorAll('.product').forEach(p => {
             p.classList.remove('expanded');
@@ -95,7 +97,12 @@ document.querySelectorAll('.product').forEach(product => {
         
         if (!isExpanded) {
             product.classList.add('expanded');
+            
             product.style.gridColumn = '1 / -1';
+         
+            if (product.nextElementSibling) {
+                product.nextElementSibling.style.gridColumn = '1';
+            }
         }
     });
 });
