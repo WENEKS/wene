@@ -194,11 +194,14 @@ section {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
     align-items: center;
-
+    cursor: pointer;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-
+.product.expanded {
+    grid-template-columns: 400px 1fr;
+    transition: all 0.3s ease;
+}
 
 .product:hover {
     transform: translateY(-8px) scale(1.02);
@@ -347,6 +350,14 @@ footer {
     .product-image {
         max-width: 200px;
         margin: 0 auto;
+    }
+
+    .product.expanded {
+        grid-template-columns: 1fr;
+    }
+    
+    .product.expanded .product-image {
+        max-width: 300px;
     }
 
     header {

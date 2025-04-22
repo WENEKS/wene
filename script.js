@@ -80,3 +80,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+
+
+document.querySelectorAll('.product').forEach(product => {
+    product.addEventListener('click', () => {
+        const isExpanded = product.classList.contains('expanded');
+        
+        document.querySelectorAll('.product').forEach(p => {
+            p.classList.remove('expanded');
+            p.style.gridColumn = '';
+        });
+        
+        if (!isExpanded) {
+            product.classList.add('expanded');
+            product.style.gridColumn = '1 / -1';
+        }
+    });
+});
