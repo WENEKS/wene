@@ -1,4 +1,4 @@
-// Smooth scrolling
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -7,7 +7,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
+
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 100) {
@@ -19,7 +19,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add filter functionality
+
 const filterButtons = document.querySelectorAll('.filter-btn');
 const products = document.querySelectorAll('.product');
 
@@ -32,14 +32,12 @@ filterButtons.forEach(button => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
 
-        // First fade out all products
         await Promise.all([...products].map(product => {
             product.style.opacity = '0';
             product.style.transform = 'scale(0.95)';
             return new Promise(resolve => setTimeout(resolve, 200));
         }));
 
-        // Then update visibility and fade in matching products
         products.forEach(product => {
             if (category === 'all' || product.dataset.category === category) {
                 product.style.display = 'grid';
@@ -57,7 +55,6 @@ filterButtons.forEach(button => {
 
 
 
-// Update the mobile menu creation
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.createElement('button');
     mobileMenuBtn.className = 'mobile-menu-btn';
@@ -75,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.innerHTML = navUl.classList.contains('show') ? '✕' : '☰';
     });
 
-    // Close menu when clicking outside
+
     document.addEventListener('click', (e) => {
         if (!nav.contains(e.target) && navUl.classList.contains('show')) {
             navUl.classList.remove('show');
